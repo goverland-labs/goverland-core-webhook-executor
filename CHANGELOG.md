@@ -7,6 +7,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+- Updated platforms-events dependency version
+
 ## [0.1.0] - 2023-07-10
 
 ### Added
