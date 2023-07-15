@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 
 	"github.com/goverland-labs/platform-events/events/core"
 	client "github.com/goverland-labs/platform-events/pkg/natsclient"
@@ -19,6 +20,10 @@ import (
 
 const (
 	groupName = "webhook"
+
+	maxPendingCallbacks = 100
+	rateLimit           = 500 * client.KiB
+	executionTtl        = time.Minute
 )
 
 var (
@@ -27,7 +32,7 @@ var (
 
 type Consumer struct {
 	conn     *nats.Conn
-	consumer *client.Consumer
+	consumer *client.Consumer[core.CallbackPayload]
 
 	httpClient *http.Client
 }
@@ -49,7 +54,15 @@ func (c *Consumer) Start(ctx context.Context) error {
 	group := config.GenerateGroupName(groupName)
 	name := fmt.Sprintf("%s/%s", group, core.SubjectCallback)
 
-	consumer, err := client.NewConsumer(ctx, c.conn, group, core.SubjectCallback, c.handler())
+	// TODO: Might we should move it to the configuration
+
+	opts := []client.ConsumerOpt{
+		client.WithMaxAckPending(maxPendingCallbacks),
+		client.WithRateLimit(rateLimit),
+		client.WithAckWait(executionTtl),
+	}
+
+	consumer, err := client.NewConsumer(ctx, c.conn, group, core.SubjectCallback, c.handler(), opts...)
 	if err != nil {
 		return fmt.Errorf("consume %s: %w", name, err)
 	}
@@ -60,7 +73,8 @@ func (c *Consumer) Start(ctx context.Context) error {
 	// todo: handle an error on the connection level
 
 	<-ctx.Done()
-	if !errors.Is(ctx.Err(), context.Canceled) {
+
+	if ctx.Err() != nil && !errors.Is(ctx.Err(), context.Canceled) {
 		log.Error().Err(ctx.Err()).Str("consumer", name).Msg("unexpected context cancelation")
 	}
 

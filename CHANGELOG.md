@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Updated platforms-events dependency to v0.1.0
+
+### Added
+- Added consumer limitations (rate limit, ack pendings, ack wait)
+
 ## [0.1.2] - 2023-07-15
 
 ### Changed
