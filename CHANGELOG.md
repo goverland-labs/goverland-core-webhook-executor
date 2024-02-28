@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+- Fixed Dockerfile
+
+### Changed
+- Update platform events library to collect nats metrics
+
 ## [0.2.0] - 2024-03-02
 
 ### Changed
