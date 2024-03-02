@@ -10,12 +10,12 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/goverland-labs/platform-events/events/core"
-	client "github.com/goverland-labs/platform-events/pkg/natsclient"
+	"github.com/goverland-labs/goverland-platform-events/events/core"
+	client "github.com/goverland-labs/goverland-platform-events/pkg/natsclient"
 	"github.com/nats-io/nats.go"
 	"github.com/rs/zerolog/log"
 
-	"github.com/goverland-labs/core-webhook-executor/internal/config"
+	"github.com/goverland-labs/goverland-core-webhook-executor/internal/config"
 )
 
 const (

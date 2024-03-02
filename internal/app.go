@@ -8,10 +8,10 @@ import (
 	"github.com/nats-io/nats.go"
 	"github.com/s-larionov/process-manager"
 
-	"github.com/goverland-labs/core-webhook-executor/internal/config"
-	"github.com/goverland-labs/core-webhook-executor/internal/webhook"
-	"github.com/goverland-labs/core-webhook-executor/pkg/health"
-	"github.com/goverland-labs/core-webhook-executor/pkg/prometheus"
+	"github.com/goverland-labs/goverland-core-webhook-executor/internal/config"
+	"github.com/goverland-labs/goverland-core-webhook-executor/internal/webhook"
+	"github.com/goverland-labs/goverland-core-webhook-executor/pkg/health"
+	"github.com/goverland-labs/goverland-core-webhook-executor/pkg/prometheus"
 )
 
 type Application struct {

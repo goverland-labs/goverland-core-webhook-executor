@@ -5,8 +5,8 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/s-larionov/process-manager"
 
-	"github.com/goverland-labs/core-webhook-executor/internal"
-	"github.com/goverland-labs/core-webhook-executor/internal/config"
+	"github.com/goverland-labs/goverland-core-webhook-executor/internal"
+	"github.com/goverland-labs/goverland-core-webhook-executor/internal/config"
 )
 
 var cfg config.App

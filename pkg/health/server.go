@@ -9,7 +9,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/s-larionov/process-manager"
 
-	"github.com/goverland-labs/core-webhook-executor/pkg/middleware"
+	"github.com/goverland-labs/goverland-core-webhook-executor/pkg/middleware"
 )
 
 const readHeaderTimeout = 30 * time.Second
