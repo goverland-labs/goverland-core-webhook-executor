@@ -7,6 +7,17 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+- Changed the path name of the go module
+- Updated dependencies versions
+
+### Added
+- Added LICENSE information
+- Added info for contributing
+- Added github issues templates
+- Added linter and unit-tests workflows for github actions
+- Added badges with link to the license and passed workflows
+
 ## [0.1.3] - 2023-07-15
 
 ### Fixed
